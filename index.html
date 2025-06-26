@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RebelMetrics - Redirecting...</title>
+    <script>
+        // Detect browser language and redirect accordingly
+        function getPreferredLanguage() {
+            const browserLang = navigator.language || navigator.userLanguage;
+            const lang = browserLang.toLowerCase().substring(0, 2);
+            
+            // Supported languages
+            const supportedLangs = ['en', 'sv', 'de'];
+            
+            if (supportedLangs.includes(lang)) {
+                return lang;
+            }
+            
+            // Default to English
+            return 'en';
+        }
+        
+        // Redirect to appropriate language
+        const lang = getPreferredLanguage();
+        if (lang === 'en') {
+            window.location.href = '/en/';
+        } else {
+            window.location.href = '/' + lang + '/';
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting to your preferred language...</p>
+</body>
+</html> 
