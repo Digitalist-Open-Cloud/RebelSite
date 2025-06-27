@@ -40,12 +40,22 @@ class RebelMetricsApp {
         const header = document.getElementById('header');
         if (!header) return;
 
+        // Get the base path for GitHub Pages
+        function getBasePath() {
+            const path = window.location.pathname;
+            // Check if we're on GitHub Pages with repository name
+            if (path.includes('/RebelSite/')) {
+                return '/RebelSite';
+            }
+            return '';
+        }
+        
+        const basePath = getBasePath();
+
         // Build the correct home URL based on current language
-        let homeUrl = '/';
+        let homeUrl = basePath + '/en/';
         if (this.currentLanguage !== 'en') {
-            homeUrl = '/' + this.currentLanguage + '/';
-        } else {
-            homeUrl = '/en/';
+            homeUrl = basePath + '/' + this.currentLanguage + '/';
         }
 
         header.innerHTML = `
@@ -66,7 +76,7 @@ class RebelMetricsApp {
                     <nav>
                         <ul class="nav-menu">
                             <li><a href="${homeUrl}#services" data-translate="nav.services">Services</a></li>
-                            <li><a href="${homeUrl}features.html" data-translate="nav.features">Features</a></li>
+                            <li><a href="${basePath}/${this.currentLanguage}/features.html" data-translate="nav.features">Features</a></li>
                             <li><a href="${homeUrl}#customers" data-translate="nav.customers">Customers</a></li>
                             <li><a href="${homeUrl}#contact" data-translate="nav.contact">Contact</a></li>
                         </ul>
