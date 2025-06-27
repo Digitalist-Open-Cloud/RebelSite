@@ -51,9 +51,18 @@ class RebelMetricsApp {
         header.innerHTML = `
             <div class="container">
                 <div class="header-content">
-                    <a href="${homeUrl}" class="logo">
-                        <img src="../images/rebel.png" alt="RebelMetrics" height="40">
-                    </a>
+                    <div class="logo-section">
+                        <a href="${homeUrl}" class="logo">
+                            <img src="../images/rebel.png" alt="RebelMetrics" height="40">
+                            <span class="logo-text">RebelMetrics</span>
+                        </a>
+                        <div class="powered-by">
+                            <span class="powered-by-text">By</span>
+                            <a href="https://digitalist.cloud" target="_blank" rel="noopener" class="digitalist-logo">
+                                <img src="../images/Digitalist-Open Cloud-Logo.png" alt="Digitalist.cloud" height="30">
+                            </a>
+                        </div>
+                    </div>
                     <nav>
                         <ul class="nav-menu">
                             <li><a href="${homeUrl}#services" data-translate="nav.services">Services</a></li>
