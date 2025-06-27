@@ -225,15 +225,32 @@ p {
 
 /* Hero Section */
 .hero {
-    padding: 6rem 0;
+    padding: 4rem 0;
     background: linear-gradient(135deg, var(--background-light) 0%, var(--background-white) 100%);
 }
 
 .hero .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    display: flex;
     align-items: center;
+    gap: 3rem;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+}
+
+.hero-text {
+    flex: 1;
+    order: 2; /* Text kommer efter (till höger) */
+}
+
+.hero-image {
+    flex: 1;
+    order: 1; /* Bild kommer först (till vänster) */
+    text-align: center;
 }
 
 .hero-title {
@@ -255,12 +272,6 @@ p {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-}
-
-.hero-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .dashboard-preview {
@@ -987,4 +998,52 @@ html {
 
 .legal-warning a:hover {
     color: var(--primary-dark);
+}
+
+/* Responsive Images */
+.hero-image img,
+.features .hero-image img,
+.dashboard-showcase img,
+.forms-showcase img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Responsive Headings */
+.hero-title, .section-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.1;
+}
+.hero-description, .section-description {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+}
+
+/* Responsive Section Spacing */
+section {
+    padding: 3rem 0;
+}
+@media (max-width: 600px) {
+    .container {
+        padding: 0 8px;
+    }
+    .hero-content, .features-grid, .services-grid, .customers-grid {
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+    }
+    .hero-image {
+        margin-top: 1.5rem;
+    }
+    section {
+        padding: 1.5rem 0;
+    }
+    .hero-title, .section-title {
+        font-size: clamp(1.5rem, 7vw, 2.2rem);
+    }
+    .hero-description, .section-description {
+        font-size: clamp(0.95rem, 3vw, 1.1rem);
+    }
 } 
