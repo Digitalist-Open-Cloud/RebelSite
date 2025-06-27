@@ -4,6 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RebelMetrics - Redirecting...</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .redirect-container {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .fallback-link {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .fallback-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
     <script>
         // Detect browser language and redirect accordingly
         function getPreferredLanguage() {
@@ -31,18 +76,46 @@
             return '';
         }
         
-        // Redirect to appropriate language
-        const lang = getPreferredLanguage();
-        const basePath = getBasePath();
-        
-        if (lang === 'en') {
-            window.location.href = basePath + '/en/index.html';
-        } else {
-            window.location.href = basePath + '/' + lang + '/index.html';
+        // Perform redirect with fallback
+        function performRedirect() {
+            const lang = getPreferredLanguage();
+            const basePath = getBasePath();
+            const targetUrl = basePath + '/' + lang + '/index.html';
+            
+            console.log('Redirecting to:', targetUrl);
+            
+            // Try immediate redirect first
+            try {
+                window.location.href = targetUrl;
+            } catch (e) {
+                console.error('Redirect failed:', e);
+                // Fallback: try after a short delay
+                setTimeout(() => {
+                    window.location.href = targetUrl;
+                }, 1000);
+            }
         }
+        
+        // Start redirect after page loads
+        window.addEventListener('load', function() {
+            // Small delay to ensure everything is ready
+            setTimeout(performRedirect, 500);
+        });
+        
+        // Also try redirect immediately
+        performRedirect();
     </script>
 </head>
 <body>
-    <p>Redirecting to your preferred language...</p>
+    <div class="redirect-container">
+        <div class="spinner"></div>
+        <h2>Redirecting to your preferred language...</h2>
+        <p>If you're not redirected automatically, please click one of the links below:</p>
+        <div style="margin-top: 1rem;">
+            <a href="/RebelSite/en/index.html" class="fallback-link">English</a>
+            <a href="/RebelSite/sv/index.html" class="fallback-link">Svenska</a>
+            <a href="/RebelSite/de/index.html" class="fallback-link">Deutsch</a>
+        </div>
+    </div>
 </body>
 </html> 

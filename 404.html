@@ -4,6 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RebelMetrics - Page Not Found</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .error-container {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            max-width: 500px;
+        }
+        .error-code {
+            font-size: 4rem;
+            font-weight: bold;
+            margin: 0;
+            color: #ff6b6b;
+        }
+        .error-message {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+        }
+        .language-links {
+            margin-top: 2rem;
+        }
+        .language-link {
+            display: inline-block;
+            margin: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .language-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        .home-link {
+            margin-top: 1rem;
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+        .home-link:hover {
+            color: white;
+        }
+    </style>
     <script>
         // GitHub Pages 404.html for SPA routing
         // This handles the language paths that GitHub Pages doesn't recognize
@@ -28,13 +85,32 @@
             window.location.href = basePath + '/sv/index.html';
         } else if (path.startsWith(basePath + '/de/') || path === basePath + '/de') {
             window.location.href = basePath + '/de/index.html';
+        } else if (path === basePath + '/' || path === basePath) {
+            // Root path - redirect to preferred language
+            const browserLang = navigator.language || navigator.userLanguage;
+            const lang = browserLang.toLowerCase().substring(0, 2);
+            const supportedLangs = ['en', 'sv', 'de'];
+            const preferredLang = supportedLangs.includes(lang) ? lang : 'en';
+            window.location.href = basePath + '/' + preferredLang + '/index.html';
         } else {
-            // Default to English
-            window.location.href = basePath + '/en/index.html';
+            // Unknown path - show 404 page
+            console.log('404 - Path not found:', path);
         }
     </script>
 </head>
 <body>
-    <p>Redirecting to RebelMetrics...</p>
+    <div class="error-container">
+        <h1 class="error-code">404</h1>
+        <h2 class="error-message">Page Not Found</h2>
+        <p>The page you're looking for doesn't exist. Please try one of our language versions:</p>
+        
+        <div class="language-links">
+            <a href="/RebelSite/en/index.html" class="language-link">English</a>
+            <a href="/RebelSite/sv/index.html" class="language-link">Svenska</a>
+            <a href="/RebelSite/de/index.html" class="language-link">Deutsch</a>
+        </div>
+        
+        <a href="/RebelSite/" class="home-link">← Back to Home</a>
+    </div>
 </body>
 </html> 
