@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RebelMetrics - Page Not Found</title>
+    <script>
+        // GitHub Pages 404.html for SPA routing
+        // This handles the language paths that GitHub Pages doesn't recognize
+        
+        const path = window.location.pathname;
+        
+        // Check if this is a language path
+        if (path.startsWith('/en/') || path === '/en') {
+            window.location.href = '/en/index.html';
+        } else if (path.startsWith('/sv/') || path === '/sv') {
+            window.location.href = '/sv/index.html';
+        } else if (path.startsWith('/de/') || path === '/de') {
+            window.location.href = '/de/index.html';
+        } else {
+            // Default to English
+            window.location.href = '/en/index.html';
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting to RebelMetrics...</p>
+</body>
+</html> 

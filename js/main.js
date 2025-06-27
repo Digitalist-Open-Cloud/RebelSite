@@ -157,24 +157,15 @@ class RebelMetricsApp {
     }
 
     switchLanguage(lang) {
-        if (!this.translations[lang]) return;
-
-        // Get current path and hash
         const currentPath = window.location.pathname;
-        const currentHash = window.location.hash;
+        const currentPage = currentPath.split('/').pop() || 'index.html';
         
-        // Build new URL based on the selected language
-        let newUrl;
-        if (lang === 'en') {
-            // For English, use /en/ path with trailing slash
-            newUrl = '/en/' + currentHash;
+        // Handle features page
+        if (currentPage === 'features.html') {
+            window.location.href = '/' + lang + '/features.html';
         } else {
-            // For other languages, use /lang/ path with trailing slash
-            newUrl = '/' + lang + '/' + currentHash;
+            window.location.href = '/' + lang + '/index.html';
         }
-
-        // Navigate to new URL
-        window.location.href = newUrl;
     }
 
     translatePage() {
