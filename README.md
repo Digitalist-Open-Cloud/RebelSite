@@ -129,11 +129,34 @@ fr: {
 
 ## Deployment
 
+### GitHub Pages - Organization Root (Recommended)
+
+To deploy at `https://digitalist-open-cloud.github.io/`:
+
+1. **Create a new repository** named exactly `digitalist-open-cloud.github.io`
+2. **Copy all files** from this repository to the new one
+3. **Enable GitHub Pages** in the new repository settings:
+   - Go to Settings → Pages
+   - Source: Deploy from a branch
+   - Branch: main
+   - Folder: / (root)
+
+### GitHub Pages - Project Repository
+
+If you want to keep it in the `RebelSite` repository:
+
+- **URL**: `https://digitalist-open-cloud.github.io/RebelSite/`
+- **Language URLs**:
+  - English: `https://digitalist-open-cloud.github.io/RebelSite/`
+  - Swedish: `https://digitalist-open-cloud.github.io/RebelSite/sv/`
+  - German: `https://digitalist-open-cloud.github.io/RebelSite/de/`
+
+### Other Hosting Options
+
 The website is ready for deployment to any static hosting service:
 
 - **Netlify**: Drag and drop the folder
 - **Vercel**: Connect your repository
-- **GitHub Pages**: Push to repository
 - **AWS S3**: Upload files to bucket
 - **Any web server**: Upload files to public directory
 
