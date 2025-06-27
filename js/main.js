@@ -22,18 +22,57 @@ class RebelMetricsApp {
         const path = window.location.pathname;
         const pathSegments = path.split('/').filter(segment => segment);
         
-        if (pathSegments.length > 0) {
-            const langFromPath = pathSegments[0];
-            if (this.translations[langFromPath]) {
-                this.currentLanguage = langFromPath;
+        console.log('🔍 Language Detection Debug:');
+        console.log('  Path:', path);
+        console.log('  Path segments:', pathSegments);
+        
+        // Handle GitHub Pages repository path
+        if (path.includes('/RebelSite/')) {
+            console.log('  Detected GitHub Pages path');
+            // Path format: /RebelSite/sv/index.html or /RebelSite/en/features.html
+            const langIndex = pathSegments.indexOf('RebelSite') + 1;
+            console.log('  RebelSite index:', pathSegments.indexOf('RebelSite'));
+            console.log('  Language index:', langIndex);
+            if (langIndex < pathSegments.length) {
+                const langFromPath = pathSegments[langIndex];
+                console.log('  Language from path:', langFromPath);
+                if (this.translations[langFromPath]) {
+                    this.currentLanguage = langFromPath;
+                    console.log('  ✅ Set language to:', this.currentLanguage);
+                } else {
+                    console.log('  ❌ Language not found in translations');
+                }
+            } else {
+                console.log('  ❌ Language index out of bounds');
             }
         } else {
-            // Default to English for root path
+            console.log('  Detected local development path');
+            // Local development path format: /sv/index.html or /en/features.html
+            if (pathSegments.length > 0) {
+                const langFromPath = pathSegments[0];
+                console.log('  Language from path:', langFromPath);
+                if (this.translations[langFromPath]) {
+                    this.currentLanguage = langFromPath;
+                    console.log('  ✅ Set language to:', this.currentLanguage);
+                } else {
+                    console.log('  ❌ Language not found in translations');
+                }
+            } else {
+                console.log('  ❌ No path segments found');
+            }
+        }
+        
+        // If no valid language found, default to English
+        if (!this.translations[this.currentLanguage]) {
+            console.log('  ⚠️  No valid language found, defaulting to English');
             this.currentLanguage = 'en';
         }
 
         // Update HTML lang attribute
         document.documentElement.lang = this.currentLanguage;
+        
+        console.log('  🎯 Final language:', this.currentLanguage);
+        console.log('  📝 HTML lang attribute:', document.documentElement.lang);
     }
 
     loadHeader() {
@@ -93,6 +132,10 @@ class RebelMetricsApp {
                             <span></span>
                         </button>
                     </div>
+                </div>
+                <!-- Debug element -->
+                <div style="position: fixed; top: 10px; right: 10px; background: red; color: white; padding: 5px; font-size: 12px; z-index: 10000;">
+                    Debug: ${this.currentLanguage} (${window.location.pathname})
                 </div>
             </div>
         `;
