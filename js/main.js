@@ -57,7 +57,7 @@ class RebelMetricsApp {
                             <span class="logo-text">RebelMetrics</span>
                         </a>
                         <div class="powered-by">
-                            <span class="powered-by-text">By</span>
+                            <span class="powered-by-text" data-translate="header.by">By</span>
                             <a href="https://digitalist.cloud" target="_blank" rel="noopener" class="digitalist-logo">
                                 <img src="../images/Digitalist-Open Cloud-Logo.png" alt="Digitalist.cloud" height="30">
                             </a>

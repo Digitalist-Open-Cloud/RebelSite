@@ -1,6 +1,11 @@
 // Translations for RebelMetrics.io
 const translations = {
     en: {
+        // Header
+        header: {
+            by: "By"
+        },
+        
         // Navigation
         nav: {
             services: "Services",
@@ -42,17 +47,17 @@ const translations = {
         
         // Features Section
         features: {
-            title: "Why your organization needs RebelMetrics?",
+            title: "4 Good Reasons to Choose RebelMetrics",
             data: {
                 title: "Data Sovereignty",
-                item1: "Data centers in the EU",
+                item1: "Data centers in EU",
                 item2: "Data centers owned by EU companies",
                 item3: "Only EU citizens have access to data",
                 item4: "100% open source in our solutions",
                 item5: "0 calls to 3rd party providers"
             },
             security: {
-                title: "Real Cyber Security",
+                title: "Security",
                 item1: "Continuous scanning of dependencies",
                 item2: "24/7 monitoring",
                 item3: "Service separation",
@@ -60,19 +65,20 @@ const translations = {
                 item5: "Open source in all parts of the ecosystem"
             },
             gdpr: {
-                title: "GDPR-safe",
-                item1: "Control over data collection and consents",
+                title: "GDPR",
+                item1: "Control over data collection and consent",
                 item2: "Application configuration for GDPR",
-                item3: "Data centers in the EU",
+                item3: "Data centers in EU",
                 item4: "Data storage in line with GDPR",
                 item5: "Sub-processor agreement for GDPR"
             },
             sustainable: {
-                title: "Access to competence",
-                item1: "Support from real Matomo experts",
-                item2: "Access to Matomo consultants with moore than 10 years experience",
-                item3: "Access to training materials",
-                item4: "Matomo trainings and webinars", 
+                title: "Sustainable",
+                item1: "Contributes to Open Source project development",
+                item2: "Green electricity",
+                item3: "Covered by ISO 27001, 9001, 14001 and 45001 management systems",
+                item4: "True cloud = energy efficiency",
+                item5: "Award-winning employer with collective agreement in place"
             }
         },
         
@@ -120,6 +126,11 @@ const translations = {
     },
     
     sv: {
+        // Header
+        header: {
+            by: "Av"
+        },
+        
         // Navigation
         nav: {
             services: "Tjänster",
@@ -190,7 +201,7 @@ const translations = {
                 title: "Hållbart",
                 item1: "Bidrar till utvecklingen av Open Source projektet",
                 item2: "Grön el",
-                item3: "Omfattas av ledningssystemet för ISO 27001",
+                item3: "Omfattas av ledningssystemen för ISO 27001, 9001, 14001 och 45001",
                 item4: "Äkta cloud = energieffektivisering",
                 item5: "Prisbelönt arbetsgivare med kollektivavtal på plats"
             }
@@ -240,6 +251,11 @@ const translations = {
     },
     
     de: {
+        // Header
+        header: {
+            by: "Von"
+        },
+        
         // Navigation
         nav: {
             services: "Dienstleistungen",
@@ -310,7 +326,7 @@ const translations = {
                 title: "Nachhaltig",
                 item1: "Trägt zur Entwicklung von Open Source-Projekten bei",
                 item2: "Grüner Strom",
-                item3: "Abgedeckt durch ISO 27001 Managementsystem",
+                item3: "Abgedeckt durch ISO 27001, 9001, 14001 und 45001 Managementsystems",
                 item4: "Echte Cloud = Energieeffizienz",
                 item5: "Preisgekrönter Arbeitgeber mit Tarifvertrag"
             }

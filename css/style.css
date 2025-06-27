@@ -370,7 +370,7 @@ p {
 }
 
 .service-card.featured::before {
-    content: 'Featured';
+    content: 'RebelMetrics unique';
     position: absolute;
     top: -12px;
     left: 50%;
