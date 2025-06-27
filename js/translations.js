@@ -11,7 +11,7 @@ const translations = {
         
         // Hero Section
         hero: {
-            title: "GDPR-safe Analytics with Surveys and Premium Dashboards",
+            title: "GDPR-safe, resilient and secure Analytics with Surveys and Premium Dashboards",
             subtitle: "Open source drives innovation and frees you from vendor lock-in. RebelMetrics delivers secure analytics services built on Matomo, with hosting in EU data centers for government agencies, companies and organizations.",
             cta: {
                 primary: "Our Services",
@@ -22,7 +22,7 @@ const translations = {
         // Services Section
         services: {
             title: "RebelMetrics - Complete Analytics Platform",
-            description: "RebelMetrics is a comprehensive GDPR-safe analytics platform that includes everything you need for data-driven insights.",
+            description: "RebelMetrics is a comprehensive GDPR-safe, resilient and secure analytics platform that includes everything you need for data-driven insights.",
             matomo: {
                 title: "Matomo Analytics",
                 description: "Powerful web analytics tool, a perfect alternative to Google Analytics with full GDPR compliance.",
@@ -42,7 +42,7 @@ const translations = {
         
         // Features Section
         features: {
-            title: "4 Good Reasons to Choose RebelMetrics",
+            title: "Why your organization needs RebelMetrics?",
             data: {
                 title: "Data Sovereignty",
                 item1: "Data centers in the EU",
@@ -52,7 +52,7 @@ const translations = {
                 item5: "0 calls to 3rd party providers"
             },
             security: {
-                title: "Security",
+                title: "Real Cyber Security",
                 item1: "Continuous scanning of dependencies",
                 item2: "24/7 monitoring",
                 item3: "Service separation",
@@ -60,7 +60,7 @@ const translations = {
                 item5: "Open source in all parts of the ecosystem"
             },
             gdpr: {
-                title: "GDPR",
+                title: "GDPR-safe",
                 item1: "Control over data collection and consents",
                 item2: "Application configuration for GDPR",
                 item3: "Data centers in the EU",
@@ -68,12 +68,11 @@ const translations = {
                 item5: "Sub-processor agreement for GDPR"
             },
             sustainable: {
-                title: "Sustainable",
-                item1: "Contributes to Open Source project development",
-                item2: "Green electricity",
-                item3: "Covered by ISO 27001 management system",
-                item4: "True cloud = energy efficiency",
-                item5: "Award-winning employer with collective agreement"
+                title: "Access to competence",
+                item1: "Support from real Matomo experts",
+                item2: "Access to Matomo consultants with moore than 10 years experience",
+                item3: "Access to training materials",
+                item4: "Matomo trainings and webinars", 
             }
         },
         
@@ -87,7 +86,7 @@ const translations = {
             title: "Contact Us",
             info: {
                 title: "Get in Touch",
-                description: "Ready to get started with GDPR-safe analytics? Contact us today."
+                description: "Ready to get started with GDPR-safe, resilient and secure analytics? Contact us today."
             },
             email: {
                 label: "Email:"
