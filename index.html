@@ -21,12 +21,24 @@
             return 'en';
         }
         
+        // Get the base path for GitHub Pages
+        function getBasePath() {
+            const path = window.location.pathname;
+            // Check if we're on GitHub Pages with repository name
+            if (path.includes('/RebelSite/')) {
+                return '/RebelSite';
+            }
+            return '';
+        }
+        
         // Redirect to appropriate language
         const lang = getPreferredLanguage();
+        const basePath = getBasePath();
+        
         if (lang === 'en') {
-            window.location.href = '/en/index.html';
+            window.location.href = basePath + '/en/index.html';
         } else {
-            window.location.href = '/' + lang + '/index.html';
+            window.location.href = basePath + '/' + lang + '/index.html';
         }
     </script>
 </head>

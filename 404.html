@@ -10,16 +10,27 @@
         
         const path = window.location.pathname;
         
+        // Get the base path for GitHub Pages
+        function getBasePath() {
+            // Check if we're on GitHub Pages with repository name
+            if (path.includes('/RebelSite/')) {
+                return '/RebelSite';
+            }
+            return '';
+        }
+        
+        const basePath = getBasePath();
+        
         // Check if this is a language path
-        if (path.startsWith('/en/') || path === '/en') {
-            window.location.href = '/en/index.html';
-        } else if (path.startsWith('/sv/') || path === '/sv') {
-            window.location.href = '/sv/index.html';
-        } else if (path.startsWith('/de/') || path === '/de') {
-            window.location.href = '/de/index.html';
+        if (path.startsWith(basePath + '/en/') || path === basePath + '/en') {
+            window.location.href = basePath + '/en/index.html';
+        } else if (path.startsWith(basePath + '/sv/') || path === basePath + '/sv') {
+            window.location.href = basePath + '/sv/index.html';
+        } else if (path.startsWith(basePath + '/de/') || path === basePath + '/de') {
+            window.location.href = basePath + '/de/index.html';
         } else {
             // Default to English
-            window.location.href = '/en/index.html';
+            window.location.href = basePath + '/en/index.html';
         }
     </script>
 </head>

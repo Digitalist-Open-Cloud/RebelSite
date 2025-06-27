@@ -160,11 +160,22 @@ class RebelMetricsApp {
         const currentPath = window.location.pathname;
         const currentPage = currentPath.split('/').pop() || 'index.html';
         
+        // Get the base path for GitHub Pages
+        function getBasePath() {
+            // Check if we're on GitHub Pages with repository name
+            if (currentPath.includes('/RebelSite/')) {
+                return '/RebelSite';
+            }
+            return '';
+        }
+        
+        const basePath = getBasePath();
+        
         // Handle features page
         if (currentPage === 'features.html') {
-            window.location.href = '/' + lang + '/features.html';
+            window.location.href = basePath + '/' + lang + '/features.html';
         } else {
-            window.location.href = '/' + lang + '/index.html';
+            window.location.href = basePath + '/' + lang + '/index.html';
         }
     }
 
