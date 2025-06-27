@@ -358,6 +358,18 @@ p {
     border: 1px solid var(--border-color);
     text-align: center;
 }
+.service-card li {
+    position: relative;
+    list-style: none;   
+
+}
+.service-card li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
 
 .service-card:hover {
     transform: translateY(-4px);
@@ -825,6 +837,7 @@ p {
     .feature-card {
         padding: 1.5rem;
     }
+
 
     .customers-grid {
         grid-template-columns: 1fr;

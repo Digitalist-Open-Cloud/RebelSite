@@ -30,18 +30,36 @@ const translations = {
             description: "RebelMetrics is a comprehensive GDPR-safe, resilient and secure analytics platform that includes everything you need for data-driven insights.",
             matomo: {
                 title: "Matomo Analytics",
-                description: "Powerful web analytics tool, a perfect alternative to Google Analytics with full GDPR compliance.",
-                price: "Included"
+                description: "Privacy-focused web analytics that gives you 100% data ownership and GDPR compliance out of the box.",
+                price: "Included",
+                features: {
+                    1: "Real-time visitor tracking",
+                    2: "Custom reports and dashboards",
+                    3: "E-commerce tracking",
+                    4: "Goal conversion tracking"
+                }
             },
             dashboards: {
                 title: "Premium Dashboards",
-                description: "Custom dashboards and data analysis platform designed specifically for your business needs.",
-                price: "Included"
+                description: "Custom dashboards and visualizations to transform your data into actionable insights.",
+                price: "Included",
+                features: {
+                    1: "Custom dashboard design",
+                    2: "Real-time data visualization",
+                    3: "Interactive charts and graphs",
+                    4: "Automated reporting"
+                }
             },
             forms: {
                 title: "Survey Forms",
-                description: "Integrated survey and form collection tools to gather user feedback and insights.",
-                price: "Included"
+                description: "Create and manage custom survey forms to collect feedback and insights from your users.",
+                price: "Included",
+                features: {
+                    1: "Custom form builder",
+                    2: "Response analytics",
+                    3: "Data export capabilities",
+                    4: "Integration with analytics"
+                }
             }
         },
         
@@ -156,17 +174,35 @@ const translations = {
             matomo: {
                 title: "Matomo Analytics",
                 description: "Kraftfullt webbanalysverktyg, ett perfekt alternativ till Google Analytics med full GDPR-efterlevnad.",
-                price: "Inkluderat"
+                price: "Inkluderat",
+                features: {
+                    1: "Realtids spårning av besökare",
+                    2: "Anpassade rapporter och dashboards",
+                    3: "E-handelsspårning",
+                    4: "Målkonverteringsspårning"
+                }
             },
             dashboards: {
                 title: "Premium Dashboards",
                 description: "Skräddarsydda dashboards och dataanalys-plattform designad specifikt för dina affärsbehov.",
-                price: "Inkluderat"
+                price: "Inkluderat",
+                features: {
+                    1: "Anpassad dashboard-design",
+                    2: "Realtids datavisualisering",
+                    3: "Interaktiva diagram och grafer",
+                    4: "Automatiserad rapportering"
+                }
             },
             forms: {
                 title: "Enkätformulär",
                 description: "Integrerade verktyg för enkäter och formulärinsamling för att samla användarfeedback och insikter.",
-                price: "Inkluderat"
+                price: "Inkluderat",
+                features: {
+                    1: "Anpassad formulärbyggare",
+                    2: "Svaranalys",
+                    3: "Dataexport-funktioner",
+                    4: "Integration med analytics"
+                }
             }
         },
         
@@ -281,17 +317,35 @@ const translations = {
             matomo: {
                 title: "Matomo Analytics",
                 description: "Leistungsstarkes Web-Analytics-Tool, eine perfekte Alternative zu Google Analytics mit vollständiger DSGVO-Konformität.",
-                price: "Inklusive"
+                price: "Inklusive",
+                features: {
+                    1: "Echtzeit-Besucherverfolgung",
+                    2: "Benutzerdefinierte Berichte und Dashboards",
+                    3: "E-Commerce-Verfolgung",
+                    4: "Zielkonversionsverfolgung"
+                }
             },
             dashboards: {
                 title: "Premium Dashboards",
                 description: "Maßgeschneiderte Dashboard- und Datenanalyse-Plattform, die speziell für Ihre Geschäftsanforderungen entwickelt wurde.",
-                price: "Inklusive"
+                price: "Inklusive",
+                features: {
+                    1: "Benutzerdefinierte Dashboard-Gestaltung",
+                    2: "Echtzeit-Datenvisualisierung",
+                    3: "Interaktive Diagramme und Grafiken",
+                    4: "Automatisierte Berichterstattung"
+                }
             },
             forms: {
                 title: "Umfrageformulare",
                 description: "Integrierte Umfrage- und Formularerfassungstools zur Sammlung von Benutzer-Feedback und Erkenntnissen.",
-                price: "Inklusive"
+                price: "Inklusive",
+                features: {
+                    1: "Benutzerdefinierter Formular-Generator",
+                    2: "Antwortanalyse",
+                    3: "Datenexport-Funktionen",
+                    4: "Integration mit Analytics"
+                }
             }
         },
         
