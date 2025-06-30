@@ -17,7 +17,7 @@ This directory contains all images for the RebelMetrics.io website.
 - `customers/digg-logo.png` - Digg logo
 - `customers/regeringskansliet.svg` - Regeringskansliet logo
 - `customers/konsumentverket.svg` - Konsumentverket logo
-- `customers/Serafim-Finans.png` - Serafim Finans logo
+- `customers/Hrw_logo.svg.png` - Serafim Finans logo
 - `customers/lakemedelsverket-logo.png` - Läkemedelsverket logo
 - `customers/transportstyrelsen.svg` - Transportstyrelsen logo
 - `customers/vattenfall.svg` - Vattenfall logo
