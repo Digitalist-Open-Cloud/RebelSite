@@ -11,7 +11,6 @@ class RebelMetricsApp {
         this.loadHeader();
         this.loadFooter();
         this.setupEventListeners();
-        this.translatePage();
         this.setupMobileMenu();
         this.setupContactForm();
         this.setupSmoothScrolling();
@@ -73,6 +72,9 @@ class RebelMetricsApp {
             homeUrl = basePath + '/' + this.currentLanguage + '/';
         }
 
+        // Get translations for current language
+        const t = this.translations[this.currentLanguage] || this.translations.en;
+
         header.innerHTML = `
             <div class="container">
                 <div class="header-content">
@@ -82,7 +84,7 @@ class RebelMetricsApp {
                             <span class="logo-text">RebelMetrics</span>
                         </a>
                         <div class="powered-by">
-                            <span class="powered-by-text" data-translate="header.by">By</span>
+                            <span class="powered-by-text">${t.header.by}</span>
                             <a href="https://digitalist.cloud" target="_blank" rel="noopener" class="digitalist-logo">
                                 <img src="../images/Digitalist-Open Cloud-Logo.png" alt="Digitalist.cloud" height="30">
                             </a>
@@ -90,10 +92,10 @@ class RebelMetricsApp {
                     </div>
                     <nav>
                         <ul class="nav-menu">
-                            <li><a href="${homeUrl}#services" data-translate="nav.services">Services</a></li>
-                            <li><a href="${basePath}/${this.currentLanguage}/features.html" data-translate="nav.features">Features</a></li>
-                            <li><a href="${homeUrl}#customers" data-translate="nav.customers">Customers</a></li>
-                            <li><a href="${homeUrl}#contact" data-translate="nav.contact">Contact</a></li>
+                            <li><a href="${homeUrl}#services">${t.nav.services}</a></li>
+                            <li><a href="${basePath}/${this.currentLanguage}/features.html">${t.nav.features}</a></li>
+                            <li><a href="${homeUrl}#customers">${t.nav.customers}</a></li>
+                            <li><a href="${homeUrl}#contact">${t.nav.contact}</a></li>
                         </ul>
                     </nav>
                     <div class="header-actions">
@@ -130,11 +132,11 @@ class RebelMetricsApp {
             <div class="container">
                 <div class="footer-content">
                     <div class="footer-section">
-                        <h3 data-translate="footer.about">About Us</h3>
+                        <h3>About Us</h3>
                         <p>RebelMetrics delivers secure analytics services built on Matomo, with hosting in EU data centers.</p>
                     </div>
                     <div class="footer-section">
-                        <h3 data-translate="footer.services">Services</h3>
+                        <h3>Services</h3>
                         <ul>
                             <li><a href="#services">Matomo Analytics</a></li>
                             <li><a href="#services">Premium Dashboards</a></li>
@@ -142,15 +144,15 @@ class RebelMetricsApp {
                         </ul>
                     </div>
                     <div class="footer-section">
-                        <h3 data-translate="footer.newsletter.title">Newsletter</h3>
-                        <p data-translate="footer.newsletter.description">Want to keep track of our free webinars or upcoming courses? Subscribe to our newsletter!</p>
+                        <h3>Newsletter</h3>
+                        <p>Want to keep track of our free webinars or upcoming courses? Subscribe to our newsletter!</p>
                         <form class="newsletter-form">
                             <input type="email" placeholder="Your email" required>
-                            <button type="submit" class="btn btn-primary" data-translate="footer.newsletter.subscribe">Subscribe</button>
+                            <button type="submit" class="btn btn-primary">Subscribe</button>
                         </form>
                     </div>
                     <div class="footer-section">
-                        <h3 data-translate="footer.social">Follow Us</h3>
+                        <h3>Follow Us</h3>
                         <div class="social-links">
                             <a href="#" aria-label="LinkedIn">LinkedIn</a>
                             <a href="#" aria-label="Twitter">Twitter</a>
@@ -160,11 +162,11 @@ class RebelMetricsApp {
                 </div>
                 <div class="footer-bottom">
                     <div class="footer-links">
-                        <a href="#terms" data-translate="footer.terms">Terms & Conditions</a>
-                        <a href="#privacy" data-translate="footer.privacy">Privacy Policy</a>
+                        <a href="#terms">Terms & Conditions</a>
+                        <a href="#privacy">Privacy Policy</a>
                     </div>
                     <div class="footer-info">
-                        <p data-translate="footer.energy">This website is using 100% renewable energy</p>
+                        <p>This website is using 100% renewable energy</p>
                         <p>&copy; 2024 RebelMetrics. All rights reserved.</p>
                     </div>
                 </div>
@@ -202,46 +204,6 @@ class RebelMetricsApp {
         } else {
             window.location.href = basePath + '/' + lang + '/index.html';
         }
-    }
-
-    translatePage() {
-        const elements = document.querySelectorAll('[data-translate]');
-        elements.forEach(element => {
-            const key = element.dataset.translate;
-            const translation = this.getTranslation(key);
-            if (translation) {
-                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                    element.placeholder = translation;
-                } else {
-                    element.textContent = translation;
-                }
-            }
-        });
-
-        // Update placeholders
-        const placeholderElements = document.querySelectorAll('[data-translate-placeholder]');
-        placeholderElements.forEach(element => {
-            const key = element.dataset.translatePlaceholder;
-            const translation = this.getTranslation(key);
-            if (translation) {
-                element.placeholder = translation;
-            }
-        });
-    }
-
-    getTranslation(key) {
-        const keys = key.split('.');
-        let translation = this.translations[this.currentLanguage];
-        
-        for (const k of keys) {
-            if (translation && translation[k]) {
-                translation = translation[k];
-            } else {
-                return null;
-            }
-        }
-        
-        return translation;
     }
 
     setupEventListeners() {
