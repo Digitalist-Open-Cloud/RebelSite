@@ -13,12 +13,12 @@ This directory contains all images for the RebelMetrics.io website.
 - `hero-dashboard.png` - Main dashboard preview image for hero section
 
 ### Customer Logos
-- `customers/msb.svg` - MSB logo
-- `customers/digg.svg` - Digg logo
+- `customers/msb.png` - MSB logo
+- `customers/digg-logo.png` - Digg logo
 - `customers/regeringskansliet.svg` - Regeringskansliet logo
 - `customers/konsumentverket.svg` - Konsumentverket logo
-- `customers/serafim.svg` - Serafim Finans logo
-- `customers/lakemedelsverket.svg` - Läkemedelsverket logo
+- `customers/Serafim-Finans.png` - Serafim Finans logo
+- `customers/lakemedelsverket-logo.png` - Läkemedelsverket logo
 - `customers/transportstyrelsen.svg` - Transportstyrelsen logo
 - `customers/vattenfall.svg` - Vattenfall logo
 
