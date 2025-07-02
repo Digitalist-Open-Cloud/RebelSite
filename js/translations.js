@@ -11,6 +11,11 @@ const translations = {
             features: "Features", 
             customers: "Customers",
             contact: "Contact"
+        },
+        hero: {
+            cta: {
+                quote: "Get Quote"
+            }
         }
     },
     
@@ -23,6 +28,11 @@ const translations = {
             features: "Funktioner",
             customers: "Kunder", 
             contact: "Kontakt"
+        },
+        hero: {
+            cta: {
+                quote: "Få offert"
+            }
         }
     },
     
@@ -35,6 +45,11 @@ const translations = {
             features: "Funktionen",
             customers: "Kunden",
             contact: "Kontakt"
+        },
+        hero: {
+            cta: {
+                quote: "Angebot anfordern"
+            }
         }
     }
 };

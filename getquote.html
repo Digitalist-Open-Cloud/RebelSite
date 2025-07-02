@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Quote - RebelMetrics Pricing</title>
+    <meta name="description" content="Get a personalized quote for RebelMetrics Matomo SaaS services. Calculate pricing based on your data volumes and requirements.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .pricing-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .pricing-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+        
+        .quote-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .price-summary {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            position: sticky;
+            top: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .slider-container {
+            margin-top: 0.5rem;
+        }
+        
+        .slider-container input[type="range"] {
+            width: 100%;
+            margin: 0.5rem 0;
+        }
+        
+        .slider-value {
+            text-align: center;
+            font-weight: 600;
+            color: #667eea;
+            margin-top: 0.5rem;
+        }
+        
+        .price-breakdown {
+            margin: 1.5rem 0;
+        }
+        
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e1e5e9;
+        }
+        
+        .price-item:last-child {
+            border-bottom: none;
+        }
+        
+        .total-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        
+        .btn-quote {
+            background: #667eea;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .btn-quote:hover {
+            background: #5a6fd8;
+        }
+        
+        .features-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .features-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e1e5e9;
+        }
+        
+        .features-list li:before {
+            content: "✓";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .price-summary {
+                position: static;
+            }
+            
+            .modal-content {
+                margin: 10% auto;
+                width: 95%;
+                padding: 1.5rem;
+            }
+            
+            .modal-title {
+                font-size: 1.3rem;
+            }
+            
+            .quote-summary {
+                padding: 1rem;
+            }
+            
+            .summary-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.25rem;
+            }
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e1e5e9;
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin: 0;
+        }
+        
+        .close {
+            color: #aaa;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+        
+        .close:hover {
+            color: #333;
+        }
+        
+        .quote-summary {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-item:last-child {
+            margin-bottom: 0;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #667eea;
+            border-top: 1px solid #e1e5e9;
+            padding-top: 0.5rem;
+        }
+        
+        .request-form {
+            margin-top: 1.5rem;
+        }
+        
+        .request-form .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .request-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .request-form input,
+        .request-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .request-form input:focus,
+        .request-form textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .request-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .btn-submit {
+            background: #667eea;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .btn-submit:hover {
+            background: #5a6fd8;
+        }
+        
+        .btn-submit:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header" style="position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 9999 !important; background-color: rgba(255, 255, 255, 0.95) !important; backdrop-filter: blur(10px) !important; -webkit-backdrop-filter: blur(10px) !important; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important; width: 100% !important; min-height: 90px !important; padding: 1.5rem 0 !important;">
+        <!-- Header will be loaded by JavaScript -->
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="pricing-hero">
+            <div class="container">
+                <h1>Get Your Personalized Quote</h1>
+                <p>Calculate pricing for RebelMetrics Matomo SaaS services based on your specific needs</p>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing-container">
+            <div class="pricing-grid">
+                <!-- Quote Form -->
+                <div class="quote-form">
+                    <h2>Configure Your Service</h2>
+                    <form id="quoteForm">
+                        <div class="form-group">
+                            <label for="actionsPerMonth">Monthly Data Volume (Base: 500,000 included)</label>
+                            <div class="slider-container">
+                                <input type="range" id="actionsPerMonth" name="actionsPerMonth" 
+                                       min="0" max="49500000" step="100000" value="0">
+                                <div class="slider-value">
+                                    <span id="actionsValue">500,000</span> actions/month
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rawDataRetention">Raw Data Retention</label>
+                            <select id="rawDataRetention" name="rawDataRetention" required>
+                                <option value="180">180 days (included)</option>
+                                <option value="270">270 days (+23 EUR/month)</option>
+                                <option value="365">365 days (+45 EUR/month)</option>
+                                <option value="400">400 days (+68 EUR/month)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="aggregatedDataRetention">Aggregated Data Retention</label>
+                            <select id="aggregatedDataRetention" name="aggregatedDataRetention" required>
+                                <option value="24">24 months (included)</option>
+                                <option value="36">36 months (+5 EUR/month)</option>
+                                <option value="48">48 months (+9 EUR/month)</option>
+                                <option value="60">60 months (+14 EUR/month)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="userCount">Number of Users</label>
+                            <div class="slider-container">
+                                <input type="range" id="userCount" name="userCount" 
+                                       min="3" max="13" step="1" value="3">
+                                <div class="slider-value">
+                                    <span id="usersValue">3</span> users (3 included, additional users at 17 EUR each)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group unlimited-users-group">
+                            <div class="unlimited-users-container">
+                                <input type="checkbox" id="unlimitedUsers" name="unlimitedUsers" class="custom-radio">
+                                <label for="unlimitedUsers" class="unlimited-users-label">
+                                    <span class="radio-button"></span>
+                                    <span class="label-text">Unlimited Users (+182 EUR/month)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Price Summary -->
+                <div class="price-summary">
+                    <h2>Price Summary</h2>
+                    <div class="price-breakdown" id="priceBreakdown">
+                        <div class="price-item">
+                            <span>Base Package</span>
+                            <span>273 EUR</span>
+                        </div>
+                    </div>
+                    
+                    <div class="total-price">
+                        <div>Total Monthly Price:</div>
+                        <div id="totalPrice">273 EUR</div>
+                    </div>
+                    
+                    <button type="submit" form="quoteForm" class="btn-quote">Get Detailed Quote</button>
+                    
+                    <h3>What's Included:</h3>
+                    <ul class="features-list">
+                        <li>500,000 actions per month</li>
+                        <li>3 user accounts</li>
+                        <li>180 days raw data retention</li>
+                        <li>24 months aggregated data retention</li>
+                        <li>20 dimensions included</li>
+                        <li>1 GB custom data in Superset</li>
+                        <li>20k Superset requests per month</li>
+                        <li>EU data centers</li>
+                        <li>GDPR compliance</li>
+                        <li>24/7 support</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Quote Request Modal -->
+    <div id="quoteModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Request Quote</h2>
+                <span class="close">&times;</span>
+            </div>
+            
+            <div class="quote-summary" id="quoteSummary">
+                <!-- Summary will be populated by JavaScript -->
+            </div>
+            
+            <form id="requestForm" class="request-form">
+                <input type="hidden" id="quoteData" name="quoteData">
+                
+                <div class="form-group">
+                    <label for="companyName">Company Name *</label>
+                    <input type="text" id="companyName" name="companyName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactName">Contact Name *</label>
+                    <input type="text" id="contactName" name="contactName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactEmail">Email Address *</label>
+                    <input type="email" id="contactEmail" name="contactEmail" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="requestPhone">Phone Number</label>
+                    <input type="tel" id="requestPhone" name="requestPhone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="requestMessage">Additional Requirements</label>
+                    <textarea id="requestMessage" name="requestMessage" placeholder="Please describe any additional requirements or questions..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn-submit">Request Quote</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/translations.js"></script>
+    <script>
+        // Pricing logic
+        const PRICES = {
+            basePrice: 273,
+            actionsPer100k: 12,
+            unlimitedUsers: 182,
+            additionalUser: 17,
+            rawDataRetention: {
+                180: 0,
+                270: 23,
+                365: 45,
+                400: 68
+            },
+            aggregatedDataRetention: {
+                24: 0,
+                36: 5,
+                48: 9,
+                60: 14
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const actionsSlider = document.getElementById('actionsPerMonth');
+            const actionsValue = document.getElementById('actionsValue');
+            const userSlider = document.getElementById('userCount');
+            const usersValue = document.getElementById('usersValue');
+            const unlimitedUsersCheckbox = document.getElementById('unlimitedUsers');
+            const priceBreakdown = document.getElementById('priceBreakdown');
+            const totalPriceElement = document.getElementById('totalPrice');
+            const rawDataRetention = document.getElementById('rawDataRetention');
+            const aggregatedDataRetention = document.getElementById('aggregatedDataRetention');
+            const quoteForm = document.getElementById('quoteForm');
+
+            function formatLargeNumber(num) {
+                return num.toLocaleString();
+            }
+
+            function calculateActionsPrice() {
+                const additionalActions = parseInt(actionsSlider.value);
+                const additionalChunks = Math.ceil(additionalActions / 100000);
+                return additionalChunks * PRICES.actionsPer100k;
+            }
+
+            function calculateUsersPrice() {
+                if (unlimitedUsersCheckbox.checked) {
+                    return PRICES.unlimitedUsers;
+                }
+                const totalUsers = parseInt(userSlider.value);
+                const additionalUsers = Math.max(0, totalUsers - 3);
+                return additionalUsers * PRICES.additionalUser;
+            }
+
+            function calculateRawDataPrice() {
+                const days = parseInt(rawDataRetention.value);
+                return PRICES.rawDataRetention[days] || 0;
+            }
+
+            function calculateAggregatedDataPrice() {
+                const months = parseInt(aggregatedDataRetention.value);
+                return PRICES.aggregatedDataRetention[months] || 0;
+            }
+
+            function updatePriceSummary() {
+                const prices = {
+                    base: PRICES.basePrice,
+                    actions: calculateActionsPrice(),
+                    users: calculateUsersPrice(),
+                    rawData: calculateRawDataPrice(),
+                    aggregatedData: calculateAggregatedDataPrice()
+                };
+
+                const priceLabels = {
+                    base: 'Base Package',
+                    actions: 'Additional Actions',
+                    users: 'Additional Users',
+                    rawData: 'Extended Raw Data Retention',
+                    aggregatedData: 'Extended Aggregated Data Retention'
+                };
+
+                priceBreakdown.innerHTML = Object.entries(prices)
+                    .filter(([_, value]) => value > 0)
+                    .map(([key, value]) => `
+                        <div class="price-item">
+                            <span>${priceLabels[key]}</span>
+                            <span>${value.toLocaleString()} EUR</span>
+                        </div>
+                    `).join('');
+
+                const total = Object.values(prices).reduce((sum, price) => sum + price, 0);
+                totalPriceElement.textContent = total.toLocaleString() + ' EUR';
+            }
+
+            function updateUsersValue() {
+                if (unlimitedUsersCheckbox.checked) {
+                    usersValue.textContent = 'Unlimited';
+                    userSlider.disabled = true;
+                } else {
+                    const totalUsers = parseInt(userSlider.value);
+                    usersValue.textContent = totalUsers;
+                    userSlider.disabled = false;
+                }
+            }
+
+            // Event listeners
+            actionsSlider.addEventListener('input', (e) => {
+                const totalActions = 500000 + parseInt(e.target.value);
+                actionsValue.textContent = formatLargeNumber(totalActions);
+                updatePriceSummary();
+            });
+
+            userSlider.addEventListener('input', (e) => {
+                updateUsersValue();
+                updatePriceSummary();
+            });
+
+            unlimitedUsersCheckbox.addEventListener('change', (e) => {
+                updateUsersValue();
+                updatePriceSummary();
+            });
+
+            rawDataRetention.addEventListener('change', updatePriceSummary);
+            aggregatedDataRetention.addEventListener('change', updatePriceSummary);
+
+            // Form submission
+            quoteForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                showQuoteModal();
+            });
+
+            // Modal functionality
+            const modal = document.getElementById('quoteModal');
+            const closeBtn = document.querySelector('.close');
+            const requestForm = document.getElementById('requestForm');
+
+            function showQuoteModal() {
+                const quoteData = {
+                    actionsPerMonth: 500000 + parseInt(actionsSlider.value),
+                    rawDataRetention: parseInt(rawDataRetention.value),
+                    aggregatedDataRetention: parseInt(aggregatedDataRetention.value),
+                    userCount: unlimitedUsersCheckbox.checked ? 'Unlimited' : parseInt(userSlider.value),
+                    totalPrice: Object.values({
+                        base: PRICES.basePrice,
+                        actions: calculateActionsPrice(),
+                        users: calculateUsersPrice(),
+                        rawData: calculateRawDataPrice(),
+                        aggregatedData: calculateAggregatedDataPrice()
+                    }).reduce((sum, price) => sum + price, 0)
+                };
+
+                // Populate summary
+                const summary = document.getElementById('quoteSummary');
+                summary.innerHTML = `
+                    <div class="summary-item">
+                        <span>Monthly Actions:</span>
+                        <span>${formatLargeNumber(quoteData.actionsPerMonth)}</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Raw Data Retention:</span>
+                        <span>${quoteData.rawDataRetention} days</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Aggregated Data Retention:</span>
+                        <span>${quoteData.aggregatedDataRetention} months</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Users:</span>
+                        <span>${quoteData.userCount}</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Estimated Monthly Price:</span>
+                        <span>${quoteData.totalPrice.toLocaleString()} EUR</span>
+                    </div>
+                `;
+
+                // Store quote data in hidden field
+                document.getElementById('quoteData').value = JSON.stringify(quoteData);
+
+                // Show modal
+                modal.style.display = 'block';
+            }
+
+            // Close modal
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Handle request form submission
+            requestForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const formData = new FormData(requestForm);
+                const quoteData = JSON.parse(formData.get('quoteData'));
+                
+                // Send quote request via email
+                const subject = encodeURIComponent('RebelMetrics Quote Request');
+                const body = encodeURIComponent(`
+Hello,
+
+I would like to request a quote for RebelMetrics services with the following specifications:
+
+Company: ${formData.get('companyName')}
+Contact: ${formData.get('contactName')}
+Email: ${formData.get('contactEmail')}
+
+Service Configuration:
+- Monthly Actions: ${formatLargeNumber(quoteData.actionsPerMonth)}
+- Raw Data Retention: ${quoteData.rawDataRetention} days
+- Aggregated Data Retention: ${quoteData.aggregatedDataRetention} months
+- Users: ${quoteData.userCount}
+- Estimated Monthly Price: ${quoteData.totalPrice.toLocaleString()} EUR
+
+Request Details:
+- Phone: ${formData.get('requestPhone') || 'Not provided'}
+- Additional Requirements: ${formData.get('requestMessage') || 'None'}
+
+Please provide a detailed quote and next steps.
+
+Best regards,
+${formData.get('contactName')}
+                `);
+
+                window.location.href = `mailto:cloud@rebelmetrics.io?subject=${subject}&body=${body}`;
+                
+                // Close modal after sending
+                modal.style.display = 'none';
+            });
+
+            // Initialize
+            updatePriceSummary();
+            updateUsersValue();
+        });
+    </script>
+</body>
+</html> 

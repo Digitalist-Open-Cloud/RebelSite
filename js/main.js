@@ -99,6 +99,7 @@ class RebelMetricsApp {
                         </ul>
                     </nav>
                     <div class="header-actions">
+                        <a href="${basePath}/getquote.html" class="btn btn-primary cta-quote">Get Quote</a>
                         <div class="language-selector">
                             <button class="language-btn ${this.currentLanguage === 'en' ? 'active' : ''}" data-lang="en">EN</button>
                             <button class="language-btn ${this.currentLanguage === 'sv' ? 'active' : ''}" data-lang="sv">SV</button>
@@ -437,3 +438,19 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style); 
+
+
+const mtm = document.createElement('script');
+
+mtm.innerHTML = `
+  var _mtm = window._mtm = window._mtm || [];
+  _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+  (function() {
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='https://digi-matomo.dglive.net/js/container_rIOZgV0o.js'; s.parentNode.insertBefore(g,s);
+  })();
+`;
+document.head.appendChild(mtm);  
+
+
+
